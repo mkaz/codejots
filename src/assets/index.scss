@@ -1,0 +1,19 @@
+
+@import "./variables.scss";
+@import url('https://fonts.googleapis.com/css?family=Noto+Serif');
+
+* {
+    box-sizing: border-box;
+}
+
+body {
+    margin: 0;
+    padding: 0;
+    font-size: 16px;
+    font-weight: 400;
+    font-family: sans-serif;
+}
+
+.main {
+    text-align: center;
+}
