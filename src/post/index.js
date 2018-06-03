@@ -7,8 +7,10 @@ import "./post.scss";
 export const Post = ( { post } ) => {
     return (
         <article>
-            <h3> { post.title } </h3>
-            <section className="content"> { post.content } </section>
+            <h3 dangerouslySetInnerHTML={{ __html: post.title.rendered }}></h3>
+            <section 
+                className="content"
+                dangerouslySetInnerHTML={{ __html: post.content.rendered }}></section>
         </article>
     );
 }
