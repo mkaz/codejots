@@ -1,39 +1,41 @@
 /* External */
 import React, { Component } from 'react';
+import { connect } from "react-redux";
 
 /* Internal */
 import Header from './header';
-import { Posts } from './post'
+import { Posts } from './post';
+import { loadPosts } from './store/actions';
 
-class App extends Component {
-    constructor( props ) {
-        super( props );
-        this.state = {
-            posts: []
-        };
+const mapDispatchToProps = dispatch => {
+    return {
+        loadPosts: posts => dispatch( loadPosts( posts ) )
+    };
+};
+
+class ConnectedApp extends Component {
+    constructor() {
+        super();
     }
 
     componentDidMount() {
-        // call out to API
-
+        // call out to API to load posts
         fetch( '/wp-json/wp/v2/posts')
-            .then( response => { console.log( response ); return response.json() } )
-            .then( posts => { console.log( posts ); this.setState( { posts: posts } ) } );
-
-        // this.setState( { posts: [
-        //     { id: 1, title: "Foo", content: "Bar" },
-        //     { id: 2, title: "Bold Text Test", content: "This is not some <b>bold</b> text." } 
-        // ] } );
+            .then( response => { return response.json() } )
+            .then( posts => { this.props.loadPosts( posts ) } );
     }
+
 
     render() {
         return (
             <div className="main">
                 <Header/>
-                <Posts posts={this.state.posts} />
+                <Posts />
             </div>
         );
     }
 }
+
+const App = connect( null, mapDispatchToProps)( ConnectedApp )
 
 export default App;

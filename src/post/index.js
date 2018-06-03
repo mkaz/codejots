@@ -1,5 +1,6 @@
 /* External */
 import React from 'react';
+import { connect } from "react-redux";
 
 /* Internal */
 import "./post.scss";
@@ -15,7 +16,11 @@ export const Post = ( { post } ) => {
     );
 }
 
-export const Posts = ( { posts } ) => {
+const mapStateToProps = state => {
+    return { posts: state.posts };
+};
+
+const ConnectedPosts = ( { posts } ) => {
     return (
         <div>
             { posts.map( post => ( <Post key={post.id} post={post} /> ) ) }
@@ -23,4 +28,4 @@ export const Posts = ( { posts } ) => {
     );
 };
 
-
+export const Posts = connect(mapStateToProps)(ConnectedPosts)
