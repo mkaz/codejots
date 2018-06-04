@@ -5,6 +5,7 @@ import { connect } from "react-redux";
 /* Internal */
 import Header from './header';
 import { Posts } from './post';
+import Editor from './editor';
 import { loadPosts } from './store/actions';
 
 const mapDispatchToProps = dispatch => {
@@ -30,6 +31,7 @@ class ConnectedApp extends Component {
         return (
             <div className="main">
                 <Header/>
+                <Editor/>
                 <Posts />
             </div>
         );

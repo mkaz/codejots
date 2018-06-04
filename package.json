@@ -52,5 +52,10 @@
   },
   "eslintConfig": {
     "extends": "react-app"
+  },
+  "dependencies": {
+    "draft-js": "^0.10.5",
+    "react-mde": "^5.5.1",
+    "showdown": "^1.8.6"
   }
 }
