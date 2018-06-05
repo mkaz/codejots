@@ -29,10 +29,12 @@ class ConnectedApp extends Component {
 
     render() {
         return (
-            <div className="main">
+            <div className="app">
                 <Header/>
-                <Editor/>
-                <Posts />
+                <section className="main">
+                    <Editor/>
+                    <Posts />
+                </section>
             </div>
         );
     }
