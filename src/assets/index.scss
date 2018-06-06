@@ -17,3 +17,10 @@ body {
     margin: 0 auto;
     padding: 0 16px;
 }
+
+pre, code {
+    font-size: 14px;
+    font-weight: 400;
+    font-family: $systemMono;
+    color: $blue;
+}

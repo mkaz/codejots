@@ -21,6 +21,7 @@ class ConnectedEditor extends React.Component {
         this.state = {
             mdeState: null,
         };
+        this.converter = new Showdown.Converter( { tables: true, simplifiedAutoLink: true } );
     }
     
     handleValueChange = ( mdeState ) => {
@@ -31,9 +32,12 @@ class ConnectedEditor extends React.Component {
         return (
             <section className="editor">
                  <ReactMde
+                    layout="tabbed"
                     onChange={ this.handleValueChange }
                     editorState={ this.state.mdeState }
-                    //generateMarkdownPreview={(markdown) => Promise.resolve(this.converter.makeHtml(markdown))}
+                    generateMarkdownPreview={ 
+                        ( markdown ) => Promise.resolve( this.converter.makeHtml( markdown ) )
+                    }
                 />
             </section>
         );
