@@ -8,13 +8,7 @@ import { Posts } from './post';
 import Editor from './editor';
 import { loadPosts } from './store/actions';
 
-const mapDispatchToProps = dispatch => {
-    return {
-        loadPosts: posts => dispatch( loadPosts( posts ) )
-    };
-};
-
-class ConnectedApp extends Component {
+class App extends Component {
     constructor() {
         super();
     }
@@ -40,6 +34,10 @@ class ConnectedApp extends Component {
     }
 }
 
-const App = connect( null, mapDispatchToProps)( ConnectedApp )
+const mapDispatchToProps = dispatch => {
+    return {
+        loadPosts: posts => dispatch( loadPosts( posts ) )
+    };
+};
 
-export default App;
+export default connect( null, mapDispatchToProps)( App )

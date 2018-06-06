@@ -9,15 +9,9 @@ import 'react-mde/lib/styles/scss/react-mde-all.scss';
 import "./editor.scss";
 import { savePost } from "../store/actions";
 
-const mapDispatchToProps = dispatch => {
-    return {
-        savePost: post => dispatch( savePost( post ) )
-    };
-};
-
-class ConnectedEditor extends React.Component {
-    constructor() {
-        super();
+class Editor extends React.Component {
+    constructor( props ) {
+        super( props );
         this.state = {
             mdeState: null,
         };
@@ -26,23 +20,55 @@ class ConnectedEditor extends React.Component {
     
     handleValueChange = ( mdeState ) => {
         this.setState( { mdeState } );
+        if ( this.state.mdeState ) {
+            this.props.typedContent();
+        }
+    }
+
+    handleSaveButton = () => {
+        console.log( this.state.mdeState );
+        if ( ! this.state.mdesState ) {
+            this.props.noContent();
+            return;
+        }
     }
 
     render() {
         return (
             <section className="editor">
-                 <ReactMde
+                <ReactMde
                     layout="tabbed"
                     onChange={ this.handleValueChange }
                     editorState={ this.state.mdeState }
-                    generateMarkdownPreview={ 
+                    generateMarkdownPreview = { 
                         ( markdown ) => Promise.resolve( this.converter.makeHtml( markdown ) )
                     }
                 />
+                <div className="action-bar">
+                    <span><button
+                        className="save-button"
+                        onClick={ this.handleSaveButton } >
+                        Save Post
+                    </button></span>
+                    <span className="status">{ this.props.publishStatus }</span>
+                </div>
             </section>
         );
     }
 };
 
-const Editor = connect( null, mapDispatchToProps )( ConnectedEditor );
-export default Editor;
+const mapStateToProps = state => {
+    return { 
+        publishStatus: state.publishStatus };
+};
+
+const mapDispatchToProps = dispatch => {
+    return {
+        typedContent: () => dispatch( { type: 'TYPED_CONTENT' } ),
+        noContent: () => dispatch( { type: 'PUBLISH_NO_CONTENT' } ),
+        savePost: post => dispatch( savePost( post ) )
+    };
+};
+
+export default connect( mapStateToProps, mapDispatchToProps )( Editor );
+
