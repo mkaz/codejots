@@ -1,22 +1,22 @@
 /* External */
 import React from 'react';
-import { connect } from "react-redux";
-import ReactMde, {ReactMdeTypes} from "react-mde";
-import * as Showdown from "showdown";
+import { connect } from 'react-redux';
+import ReactMde from 'react-mde';
+import * as Showdown from 'showdown';
 import 'react-mde/lib/styles/scss/react-mde-all.scss';
 import uuid from 'uuid';
 
 /* Internal */
-import "./editor.scss";
-import { savePost } from "../store/actions";
+import './editor.scss';
+import { savePost } from '../store/actions';
 
 const createPostFromMde = ( mde ) => {
     const post = { title: {}, content: {} };
-    post.id = uuid.v1()
-    post.title.rendered = "Some title";
+    post.id = uuid.v1();
+    post.title.rendered = 'Some title';
     post.content.rendered = mde.html;
     return post;
-}
+};
 
 class Editor extends React.Component {
     constructor( props ) {
@@ -68,7 +68,7 @@ class Editor extends React.Component {
 
 const mapStateToProps = state => {
     return { 
-        publishStatus: state.publishStatus
+        publishStatus: state.publishStatus,
     };
 };
 
@@ -76,9 +76,8 @@ const mapDispatchToProps = dispatch => {
     return {
         typedContent: () => dispatch( { type: 'TYPED_CONTENT' } ),
         noContent: () => dispatch( { type: 'PUBLISH_NO_CONTENT' } ),
-        savePost: post => dispatch( savePost( post ) )
+        savePost: post => dispatch( savePost( post ) ),
     };
 };
 
 export default connect( mapStateToProps, mapDispatchToProps )( Editor );
-

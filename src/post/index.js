@@ -1,9 +1,9 @@
 /* External */
 import React from 'react';
-import { connect } from "react-redux";
+import { connect } from 'react-redux';
 
 /* Internal */
-import "./post.scss";
+import './post.scss';
 
 export const Post = ( { post } ) => {
     return (
@@ -14,7 +14,7 @@ export const Post = ( { post } ) => {
                 dangerouslySetInnerHTML={{ __html: post.content.rendered }}></section>
         </article>
     );
-}
+};
 
 const mapStateToProps = state => {
     return { posts: state.posts };
@@ -28,4 +28,4 @@ const ConnectedPosts = ( { posts } ) => {
     );
 };
 
-export const Posts = connect(mapStateToProps)(ConnectedPosts)
+export const Posts = connect(mapStateToProps)(ConnectedPosts);

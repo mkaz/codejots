@@ -2,22 +2,19 @@
 /* External */
 import React from 'react';
 import ReactDOM from 'react-dom';
-import { createStore, combineReducers, applyMiddleware } from 'redux'
-import { Provider } from 'react-redux'
-import createHistory from 'history/createBrowserHistory'
-import { Route } from 'react-router'
-import { ConnectedRouter, routerReducer, routerMiddleware, push } from 'react-router-redux'
+import { createStore, applyMiddleware } from 'redux';
+import { Provider } from 'react-redux';
+import { middleware as reduxPackMiddleware } from 'redux-pack';
 
 /* Internal */
 import './assets/index.scss';
 import App from './App';
-import reducers from './store/reducers'
-import registerServiceWorker from './registerServiceWorker';
+import reducers from './store/reducers';
 
-const history = createHistory()
-const middleware = routerMiddleware(history)
-
-const store = createStore( reducers );
+const store = createStore( 
+    reducers,
+    applyMiddleware( reduxPackMiddleware )
+);
 
 ReactDOM.render(
     <Provider store={store}>
@@ -25,4 +22,3 @@ ReactDOM.render(
     </Provider>, 
     document.getElementById('root')
 );
-registerServiceWorker();
