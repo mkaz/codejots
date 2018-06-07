@@ -2,7 +2,7 @@
 import React from 'react';
 import { connect } from 'react-redux';
 import ReactMde from 'react-mde';
-import * as Showdown from 'showdown';
+import Showdown from 'showdown';
 import 'react-mde/lib/styles/scss/react-mde-all.scss';
 import uuid from 'uuid';
 

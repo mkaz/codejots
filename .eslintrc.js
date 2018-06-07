@@ -6,6 +6,7 @@ module.exports = {
         'linebreak-style': ['error', 'unix'],
         'quotes': [ 'warn', 'single'],
         'semi': [ 'error', 'always' ],
+        'no-console': 'warn',
 
         // disable 
         'jsx-a11y/href-no-hash': 'off',
