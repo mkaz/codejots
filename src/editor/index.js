@@ -4,10 +4,19 @@ import { connect } from "react-redux";
 import ReactMde, {ReactMdeTypes} from "react-mde";
 import * as Showdown from "showdown";
 import 'react-mde/lib/styles/scss/react-mde-all.scss';
+import uuid from 'uuid';
 
 /* Internal */
 import "./editor.scss";
 import { savePost } from "../store/actions";
+
+const createPostFromMde = ( mde ) => {
+    const post = { title: {}, content: {} };
+    post.id = uuid.v1()
+    post.title.rendered = "Some title";
+    post.content.rendered = mde.html;
+    return post;
+}
 
 class Editor extends React.Component {
     constructor( props ) {
@@ -26,11 +35,11 @@ class Editor extends React.Component {
     }
 
     handleSaveButton = () => {
-        console.log( this.state.mdeState );
-        if ( ! this.state.mdesState ) {
+        if ( this.state.mdeState == null ) {
             this.props.noContent();
             return;
         }
+        this.props.savePost( createPostFromMde( this.state.mdeState ) );
     }
 
     render() {
@@ -59,7 +68,8 @@ class Editor extends React.Component {
 
 const mapStateToProps = state => {
     return { 
-        publishStatus: state.publishStatus };
+        publishStatus: state.publishStatus
+    };
 };
 
 const mapDispatchToProps = dispatch => {

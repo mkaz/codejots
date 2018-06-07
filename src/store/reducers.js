@@ -8,9 +8,10 @@ const initialState = {
 const rootReducer = (state = initialState, action) => {
     switch ( action.type ) {
         case 'SAVE_POST':
+            console.log( action.payload );
             return { 
-                ...state, 
-                posts: [ ...state.posts, action.payload ],
+                ...state,
+                posts: [ action.payload, ...state.posts ],
             };
         case 'PUBLISHING':
             return {
