@@ -38,11 +38,11 @@ section.editor {
     user-select: none;
     border-radius: 2px;
     transition: all .3s ease-out;
-    box-shadow: 0 2px 5px 0 rgba(0,0,0,0.225);
+    //box-shadow: 0 2px 5px 0 rgba(0,0,0,0.225);
 
     &:hover {
         text-decoration: none;
-        box-shadow: 0 4px 10px 0px rgba(0, 0, 0, 0.225);
+        background-color: lighten( $yellow, 8% );
     }
 }
 

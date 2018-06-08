@@ -4,19 +4,11 @@ import { connect } from 'react-redux';
 import ReactMde from 'react-mde';
 import Showdown from 'showdown';
 import 'react-mde/lib/styles/scss/react-mde-all.scss';
-import uuid from 'uuid';
 
 /* Internal */
 import './editor.scss';
 import { savePost } from '../store/actions';
-
-const createPostFromMde = ( mde ) => {
-    const post = { title: {}, content: {} };
-    post.id = uuid.v1();
-    post.title.rendered = 'Some title';
-    post.content.rendered = mde.html;
-    return post;
-};
+import { createPostFromMde } from '../post/utils';
 
 class Editor extends React.Component {
     constructor( props ) {

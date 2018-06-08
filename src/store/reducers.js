@@ -1,4 +1,5 @@
 /* Reducers */
+import { handle } from 'redux-pack';
 
 const initialState = {
     posts: [],
@@ -8,16 +9,13 @@ const initialState = {
 const rootReducer = (state = initialState, action) => {
     switch ( action.type ) {
     case 'SAVE_POST':
-        console.log( action.payload );
-        return { 
-            ...state,
-            posts: [ action.payload, ...state.posts ],
-        };
-    case 'PUBLISHING':
-        return {
-            ...state,
-            publishStatus: 'Saving...',
-        };
+        return handle( state, action, {
+            start: prevState => ( { ...prevState, publishStatus: 'Saving' } ),
+            finish: prevState => ( { ...prevState, publishStatus: '' } ),
+            failure: prevState => ( { ...prevState, publishStatus: 'Error saving' } ),
+            success: prevState => ( { ...prevState, publishStatus: 'Saved' } ),
+            always: prevState => ( { ...prevState } ),
+        } );
     case 'PUBLISH_NO_CONTENT':
         return { 
             ...state,
