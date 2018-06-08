@@ -26,12 +26,19 @@ class Editor extends React.Component {
         }
     }
 
+    clearMdeState = () => {
+        this.setState( { mdeState: null } );
+    };
+
     handleSaveButton = () => {
         if ( this.state.mdeState == null ) {
             this.props.noContent();
             return;
         }
-        this.props.savePost( createPostFromMde( this.state.mdeState ) );
+        this.props.savePost( 
+            createPostFromMde( this.state.mdeState ),
+            this.clearMdeState
+        );
     }
 
     render() {
@@ -68,7 +75,7 @@ const mapDispatchToProps = dispatch => {
     return {
         typedContent: () => dispatch( { type: 'TYPED_CONTENT' } ),
         noContent: () => dispatch( { type: 'PUBLISH_NO_CONTENT' } ),
-        savePost: post => dispatch( savePost( post ) ),
+        savePost: ( post, cb ) => dispatch( savePost( post, cb ) ),
     };
 };
 

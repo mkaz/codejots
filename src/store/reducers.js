@@ -14,7 +14,6 @@ const initialState = {
 const rootReducer = (state = initialState, action) => {
     switch ( action.type ) {
     case 'SAVE_POST':
-        console.log( action.payload );
         return handle( state, action, {
             start: prevState => ( { ...prevState, publishStatus: 'Saving' } ),
             finish: prevState => ( { ...prevState, publishStatus: '' } ),
@@ -23,7 +22,7 @@ const rootReducer = (state = initialState, action) => {
                 posts: [ massagePostFromAPI( action.payload ), ...prevState.posts ],
                 publishStatus: 'Saved',
             } ),
-            always: prevState => ( { ...prevState } ),
+            always: prevState => ( prevState ),
         } );
     case 'PUBLISH_NO_CONTENT':
         return { 
