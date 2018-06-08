@@ -1,5 +1,10 @@
 /* Reducers */
+
+/* External */
 import { handle } from 'redux-pack';
+
+/* Internal */
+import { massagePostFromAPI } from '../post/utils';
 
 const initialState = {
     posts: [],
@@ -9,11 +14,15 @@ const initialState = {
 const rootReducer = (state = initialState, action) => {
     switch ( action.type ) {
     case 'SAVE_POST':
+        console.log( action.payload );
         return handle( state, action, {
             start: prevState => ( { ...prevState, publishStatus: 'Saving' } ),
             finish: prevState => ( { ...prevState, publishStatus: '' } ),
             failure: prevState => ( { ...prevState, publishStatus: 'Error saving' } ),
-            success: prevState => ( { ...prevState, publishStatus: 'Saved' } ),
+            success: prevState => ( { ...prevState,
+                posts: [ massagePostFromAPI( action.payload ), ...prevState.posts ],
+                publishStatus: 'Saved',
+            } ),
             always: prevState => ( { ...prevState } ),
         } );
     case 'PUBLISH_NO_CONTENT':

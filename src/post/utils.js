@@ -12,15 +12,18 @@ export const createPostFromMde = ( mde ) => {
     return post;
 };
 
+// massage single post
+export const massagePostFromAPI = post => ( {
+    key: uuid(),
+    title: post.title.rendered,
+    content: post.content.rendered,
+} );
+
 // massage post from API, remove rendered bits
 export const massagePostsFromAPI = posts => {
     const newPosts = [];
     posts.forEach( post => {
-        newPosts.push( {
-            key: uuid(),
-            title: post.title.rendered,
-            content: post.content.rendered,
-        } );
+        newPosts.push( massagePostFromAPI( post ) );
     } );
     return newPosts;
 };
