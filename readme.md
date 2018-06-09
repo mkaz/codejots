@@ -18,3 +18,8 @@ You probably don't want to do install this. I recommend checking out <a href="ht
 Why would you want to build something, you shouldn't install?
 
 
+### Colophon
+
+* Built using [React](https://reactjs.org/), JSX, and [Redux](https://redux.js.org/).
+
+* Uses [Prism.js](https://prismjs.com/) for code syntax highlighting.

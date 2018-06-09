@@ -1,5 +1,6 @@
 
 @import "./variables.scss";
+@import "./_anim.scss";
 
 * {
     box-sizing: border-box;
@@ -25,7 +26,10 @@ pre, code {
     color: $blue;
 }
 
+// https://codepen.io/rkchauhan/pen/NNKgJY
+
 button {
+    position: relative;
     cursor: pointer;
     height: 35px;
     padding: 0 1.5rem;
@@ -42,4 +46,20 @@ button {
     user-select: none;
     border-radius: 2px;
     transition: all .3s ease-out;
+
+    &:active {
+        top: 1px;
+        left: 1px;
+        border: none;
+        outline: none;
+    }
+    &:focus {
+        outline: none;
+    }
+
+    &::-moz-focus-inner {
+        border: 0;
+    }
+
 }
+

@@ -1,18 +1,25 @@
 /* External */
-import React from 'react';
+import React, { Component } from 'react';
 
 /* Internal */
 import './post.scss';
 
-const Post = ( { post } ) => {
-    return (
-        <article>
-            <h3 dangerouslySetInnerHTML={{ __html: post.title }}></h3>
-            <section 
-                className="content"
-                dangerouslySetInnerHTML={{ __html: post.content }}></section>
-        </article>
-    );
+class Post extends Component {
+
+    componentDidMount() {
+        Prism.highlightAll()
+    }
+
+    render() {
+        return (
+            <article>
+                <h3 dangerouslySetInnerHTML={{ __html: this.props.post.title }}></h3>
+                <section 
+                    className="content"
+                    dangerouslySetInnerHTML={{ __html: this.props.post.content }}></section>
+            </article>
+        );
+    }
 };
 
 export default Post;
