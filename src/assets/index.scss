@@ -24,3 +24,22 @@ pre, code {
     font-family: $systemMono;
     color: $blue;
 }
+
+button {
+    cursor: pointer;
+    height: 35px;
+    padding: 0 1.5rem;
+    font-size: 15px;
+    font-weight: 600;
+    font-family: $systemFont;
+    letter-spacing: 0.8px;
+    text-align: center;
+    text-decoration: none;
+    text-transform: uppercase;
+    vertical-align: middle;
+    outline: none;
+    border: none;
+    user-select: none;
+    border-radius: 2px;
+    transition: all .3s ease-out;
+}

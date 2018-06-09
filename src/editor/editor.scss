@@ -19,33 +19,14 @@ section.editor {
 
 .save-button {
     margin: 8px 0 16px 0;
-
-    cursor: pointer;
-    height: 35px;
-    padding: 0 1.5rem;
     color: #424242;
     background-color: $yellow;
-    font-size: 15px;
-    font-weight: 600;
-    font-family: $systemFont;
-    letter-spacing: 0.8px;
-    text-align: center;
-    text-decoration: none;
-    text-transform: uppercase;
-    vertical-align: middle;
-    outline: none;
-    border: none;
-    user-select: none;
-    border-radius: 2px;
-    transition: all .3s ease-out;
-    //box-shadow: 0 2px 5px 0 rgba(0,0,0,0.225);
 
     &:hover {
         text-decoration: none;
         background-color: lighten( $yellow, 8% );
     }
 }
-
 
 .status {
     font-size: 14px;

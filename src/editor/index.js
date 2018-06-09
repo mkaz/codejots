@@ -65,18 +65,14 @@ class Editor extends React.Component {
     }
 };
 
-const mapStateToProps = state => {
-    return { 
-        publishStatus: state.publishStatus,
-    };
-};
+const mapStateToProps = state => ( {
+    publishStatus: state.publishStatus,
+} );
 
-const mapDispatchToProps = dispatch => {
-    return {
-        typedContent: () => dispatch( { type: 'TYPED_CONTENT' } ),
-        noContent: () => dispatch( { type: 'PUBLISH_NO_CONTENT' } ),
-        savePost: ( post, cb ) => dispatch( savePost( post, cb ) ),
-    };
-};
+const mapDispatchToProps = dispatch => ( {
+    typedContent: () => dispatch( { type: 'TYPED_CONTENT' } ),
+    noContent: () => dispatch( { type: 'PUBLISH_NO_CONTENT' } ),
+    savePost: ( post, cb ) => dispatch( savePost( post, cb ) ),
+} );
 
 export default connect( mapStateToProps, mapDispatchToProps )( Editor );

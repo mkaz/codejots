@@ -4,6 +4,7 @@
   "private": true,
   "scripts": {
     "lint": "eslint src/",
+    "test": "jest src/",
     "dev": "cross-env BABEL_ENV=development webpack --watch --mode development",
     "build": "cross-env BABEL_ENV=production webpack -p",
     "clean": "rm package-lock.json; rm -rf node_modules;"
@@ -26,6 +27,7 @@
     "eslint-plugin-react": "^7.4.0",
     "file-loader": "^1.1.5",
     "fs-extra": "^6.0.1",
+    "jest": "^23.1.0",
     "node-sass": "^4.9.0",
     "object-assign": "^4.1.1",
     "promise": "^8.0.1",

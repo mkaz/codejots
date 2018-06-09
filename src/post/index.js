@@ -3,24 +3,9 @@ import React from 'react';
 import { connect } from 'react-redux';
 
 /* Internal */
-import './post.scss';
+import Post from './post';
 
-export const Post = ( { post } ) => {
-    return (
-        <article>
-            <h3 dangerouslySetInnerHTML={{ __html: post.title }}></h3>
-            <section 
-                className="content"
-                dangerouslySetInnerHTML={{ __html: post.content }}></section>
-        </article>
-    );
-};
-
-const mapStateToProps = state => {
-    return { posts: state.posts };
-};
-
-const ConnectedPosts = ( { posts } ) => {
+const Posts = ( { posts } ) => {
     return (
         <div>
             { posts.map( post => ( <Post key={post.key} post={post} /> ) ) }
@@ -28,4 +13,8 @@ const ConnectedPosts = ( { posts } ) => {
     );
 };
 
-export const Posts = connect(mapStateToProps)(ConnectedPosts);
+const mapStateToProps = state => ( {
+    posts: state.posts,
+} );
+
+export default connect(mapStateToProps)(Posts);

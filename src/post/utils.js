@@ -3,12 +3,29 @@
 /* External */
 import uuid from 'uuid/v1';
 
+const parseTitleContent = html => {
+    var title = '';
+    var content = '';
+    html = html.trim();
+    let lines = html.split(/\r\n|\r|\n/g);
+    let matches = lines[0].match(/<h1.*?>(.*)<\/h1>/);
+    if ( matches ) {
+        title = matches[1];
+        content = lines.slice(1).join("\n");
+    } else {
+        console.log( html );
+        title = 'Title not found';
+        content = html;
+    }
+    return { title, content };
+};
+
 export const createPostFromMde = ( mde ) => {
     const post = { title: {}, content: {} };
-    post.key = uuid();
-    // TODO: parse title from first line
-    post.title = 'Some title';
-    post.content = mde.html;
+    var { title, content } = parseTitleContent( mde.html );
+    post.key = uuid();  // required for React
+    post.title = title;
+    post.content = content;
     return post;
 };
 
