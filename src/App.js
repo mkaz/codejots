@@ -3,7 +3,6 @@ import React, { Component } from 'react';
 import { connect } from 'react-redux';
 
 /* Internal */
-import Header from './header';
 import Posts from './post';
 import Editor from './editor';
 import { loadPosts } from './store/actions';
@@ -19,7 +18,6 @@ class App extends Component {
     render() {
         return (
             <div className="app">
-                <Header/>
                 <section className="main">
                     <Editor/>
                     <Posts />
