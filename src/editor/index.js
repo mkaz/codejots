@@ -4,6 +4,7 @@ import { connect } from 'react-redux';
 import ReactMde from 'react-mde';
 import Showdown from 'showdown';
 import 'react-mde/lib/styles/scss/react-mde-all.scss';
+import debounce from 'debounce';
 
 /* Internal */
 import './editor.scss';
@@ -14,25 +15,38 @@ class Editor extends React.Component {
     constructor( props ) {
         super( props );
         this.state = {
-            mdeState: null,
+            mdeState: ( localStorage.getItem( 'markdown' ) ) ? { markdown: localStorage.getItem( 'markdown' ) } : null,
+            cleared: false,
         };
         this.converter = new Showdown.Converter( { tables: true, simplifiedAutoLink: true } );
+        this.persistToLocalStorage = debounce( this.persistToLocalStorage, 1000 );
     }
-    
+
+    persistToLocalStorage = ( ) => {
+        if ( this.state.mdeState != null && this.state.mdeState.markdown ) {
+            console.log( "Persisting... ");
+            localStorage.setItem( 'markdown', this.state.mdeState.markdown );
+        }
+    }
+
     handleValueChange = ( mdeState ) => {
+        this.persistToLocalStorage();
         this.setState( { mdeState } );
-        if ( this.state.mdeState ) {
+        if ( this.state.mdeState && ! this.state.cleared ) {
             this.props.typedContent();
+            this.setState( { cleared: true } );
         }
     }
 
     clearMdeState = () => {
         this.setState( { mdeState: null } );
+        localStorage.setItem( 'mdeState', null );
     };
 
     handleSaveButton = () => {
         if ( this.state.mdeState == null ) {
             this.props.noContent();
+            this.setState( { cleared: false } );
             return;
         }
         this.props.savePost( 
