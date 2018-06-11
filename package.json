@@ -10,6 +10,7 @@
     "clean": "rm package-lock.json; rm -rf node_modules;"
   },
   "devDependencies": {
+    "@fortawesome/fontawesome": "^1.1.8",
     "babel-core": "^6.26.0",
     "babel-eslint": "^8.2.3",
     "babel-loader": "^7.1.4",

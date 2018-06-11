@@ -2,6 +2,7 @@
 import React, { Component } from 'react';
 
 /* Internal */
+import PostMenu from './postmenu'
 import './post.scss';
 
 class Post extends Component {
@@ -14,9 +15,11 @@ class Post extends Component {
         return (
             <article>
                 <h3 dangerouslySetInnerHTML={{ __html: this.props.post.title }}></h3>
+                <PostMenu/>
                 <section 
                     className="content"
-                    dangerouslySetInnerHTML={{ __html: this.props.post.content }}></section>
+                    dangerouslySetInnerHTML={{ __html: this.props.post.content }}>
+                </section>
             </article>
         );
     }

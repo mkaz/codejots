@@ -24,7 +24,6 @@ class Editor extends React.Component {
 
     persistToLocalStorage = ( ) => {
         if ( this.state.mdeState != null && this.state.mdeState.markdown ) {
-            console.log( "Persisting... ");
             localStorage.setItem( 'markdown', this.state.mdeState.markdown );
         }
     }
