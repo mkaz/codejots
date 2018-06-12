@@ -32,8 +32,12 @@ export const createPostFromMde = ( mde ) => {
 // massage single post
 export const massagePostFromAPI = post => ( {
     key: uuid(),
-    title: post.title.rendered,
     content: post.content.rendered,
+    date: post.date,
+    excerpt: post.excerpt,
+    id: post.id,
+    title: post.title.rendered,
+
 } );
 
 // massage post from API, remove rendered bits

@@ -15,7 +15,7 @@ class Post extends Component {
         return (
             <article>
                 <h3 dangerouslySetInnerHTML={{ __html: this.props.post.title }}></h3>
-                <PostMenu/>
+                <PostMenu postId={ this.props.post.id } />
                 <section 
                     className="content"
                     dangerouslySetInnerHTML={{ __html: this.props.post.content }}>

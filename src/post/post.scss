@@ -19,10 +19,6 @@ nav.postmenu {
     margin-right: -16px;
     position: relative;
 
-    .toggle {
-
-    }
-
     ul {
         position: absolute;
         border: 1px solid #CCCCCC;
@@ -38,6 +34,7 @@ nav.postmenu {
         li {
             padding: 8px;
             margin: 4px 0 4px 0;
+            cursor: pointer;
         }
 
         li:hover {
