@@ -15,9 +15,15 @@ function codejots_get_custom_logo_defaults() {
     );
 }
 
+function codejots_get_custom_background_defaults() {
+	return array(
+		'default-image' => get_template_directory_uri() . '/assets/blue-grid.png',
+	);
+}
+
 function codejots_theme_setup() {
     add_theme_support( 'custom-logo', codejots_get_custom_logo_defaults() );
-    add_theme_support( 'custom-background' );
+    add_theme_support( 'custom-background', codejots_get_custom_background_defaults() );
     add_theme_support( 'title-tag' );
 }
 add_action( 'after_setup_theme', 'codejots_theme_setup' );
