@@ -23,7 +23,15 @@ function codejots_theme_setup() {
 add_action( 'after_setup_theme', 'codejots_theme_setup' );
 
 function codejots_enqueue_scripts() {
- 
+
+    wp_enqueue_script(
+        'font-awesome',
+        get_template_directory_uri() . '/assets/fontawesome-all.min.js',
+        array(),
+        1.14,
+        true
+    );
+
     wp_enqueue_script(
         'codejots-script',
         get_template_directory_uri() . '/dist/bundle.js',
@@ -52,3 +60,5 @@ function codejots_enqueue_scripts() {
 
 }
 add_action( 'wp_enqueue_scripts', 'codejots_enqueue_scripts' );
+
+require get_template_directory() . "/wp-scrub.php";

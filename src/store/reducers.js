@@ -22,7 +22,6 @@ const rootReducer = (state = initialState, action) => {
                 posts: [ massagePostFromAPI( action.payload ), ...prevState.posts ],
                 publishStatus: 'Saved',
             } ),
-            always: prevState => ( prevState ),
         } );
     case 'PUBLISH_NO_CONTENT':
         return { 
@@ -39,7 +38,14 @@ const rootReducer = (state = initialState, action) => {
             ...state,
             posts: action.payload,
         };
-    
+    case 'TRASH_POST':
+        return handle ( state, action, {
+            success: prevState => ( { ...prevState,
+                posts: prevState.posts.filter( ( post ) => {
+                    return post.id !== action.payload.id
+                } ),
+            } ),
+        } );
     default:
         return state;
     }

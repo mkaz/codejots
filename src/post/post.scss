@@ -11,3 +11,45 @@ article {
     font-family: "Noto Serif", serif;
     font-size: 18px;
 }
+
+nav.postmenu {
+    float:right;
+    display: inline-block;
+    margin-top: -4.0rem;
+    margin-right: -16px;
+    position: relative;
+
+    ul {
+        position: absolute;
+        border: 1px solid #CCCCCC;
+        margin: 0;
+        padding: 0px;
+        font-size: 14px;
+        list-style: none;
+        min-width: 120px;
+    
+        transition: all 200ms;
+        right: 0;
+
+        li {
+            padding: 8px;
+            margin: 4px 0 4px 0;
+            cursor: pointer;
+        }
+
+        li:hover {
+            background-color: #CCCCCC;
+        }
+    }
+
+
+    .items-hide {
+        display: none;
+        opacity: 0.0;
+    }
+
+    .items-show {
+        display: block;
+        opacity: 1.0;
+    }
+}

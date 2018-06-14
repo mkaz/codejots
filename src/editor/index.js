@@ -24,7 +24,6 @@ class Editor extends React.Component {
 
     persistToLocalStorage = ( ) => {
         if ( this.state.mdeState != null && this.state.mdeState.markdown ) {
-            console.log( "Persisting... ");
             localStorage.setItem( 'markdown', this.state.mdeState.markdown );
         }
     }
@@ -49,7 +48,7 @@ class Editor extends React.Component {
             this.setState( { cleared: false } );
             return;
         }
-        this.props.savePost( 
+        this.props.savePost(
             createPostFromMde( this.state.mdeState ),
             this.clearMdeState
         );
@@ -62,14 +61,14 @@ class Editor extends React.Component {
                     layout="tabbed"
                     onChange={ this.handleValueChange }
                     editorState={ this.state.mdeState }
-                    generateMarkdownPreview = { 
+                    generateMarkdownPreview = {
                         ( markdown ) => Promise.resolve( this.converter.makeHtml( markdown ) )
                     }
                 />
                 <div className="action-bar">
                     <span><button
                         className="save-button"
-                        onClick={ this.handleSaveButton } >
+                        onClick={ () => this.handleSaveButton() } >
                         Save Post
                     </button></span>
                     <span className="status">{ this.props.publishStatus }</span>

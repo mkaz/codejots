@@ -20,3 +20,11 @@ export const loadPosts = posts => ( {
     type: 'LOAD_POSTS',
     payload: massagePostsFromAPI( posts ),
 } );
+
+export const trashPost = postId => ( {
+    type: 'TRASH_POST',
+    promise: wp.apiRequest( {
+        path: '/wp/v2/posts/' + postId,
+        method: 'DELETE',
+    } ),
+} );
