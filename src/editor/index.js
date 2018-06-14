@@ -39,7 +39,7 @@ class Editor extends React.Component {
 
     clearMdeState = () => {
         this.setState( { mdeState: null } );
-        localStorage.setItem( 'mdeState', null );
+        localStorage.setItem( 'markdown', null );
     };
 
     handleSaveButton = () => {
