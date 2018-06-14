@@ -24,7 +24,7 @@ const rootReducer = (state = initialState, action) => {
             } ),
         } );
     case 'PUBLISH_NO_CONTENT':
-        return { 
+        return {
             ...state,
             publishStatus: 'Nothing to save.',
         };
@@ -42,7 +42,7 @@ const rootReducer = (state = initialState, action) => {
         return handle ( state, action, {
             success: prevState => ( { ...prevState,
                 posts: prevState.posts.filter( ( post ) => {
-                    return post.id !== action.payload.id
+                    return post.id !== action.payload.id;
                 } ),
             } ),
         } );

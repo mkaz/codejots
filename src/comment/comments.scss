@@ -1,0 +1,49 @@
+
+section.comments {
+
+    min-width: 320px;
+    max-width: 960px;
+    margin: 0 auto;
+
+    section.action {
+        margin: 0;
+        padding: 16px 32px;
+        background-color: white;
+        font-size: 14px;
+        cursor: pointer;
+
+        span {
+            margin: 0 4px;
+        }
+    }
+
+    section.comment-form {
+        margin: 0 auto 32px 32px;
+        padding: 16px;
+        background-color: white;
+        border-top: 1px solid #CCC;
+    }
+
+    section.comment-list {
+        margin: 0 auto 0 32px;
+        padding: 16px;
+        background-color: white;
+        border-top: 1px solid #CCC;
+
+        .comment {
+            margin: 16px 0 16px 0;
+            padding: 8px 8px 16px 8px;
+            border-bottom: 1px solid #CCC;
+        }
+
+        .comment:last-child {
+            border-bottom: none;
+        }
+
+        .comment-meta {
+            font-size: 14px;
+            color: #666;
+        }
+    }
+
+}

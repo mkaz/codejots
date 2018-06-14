@@ -3,13 +3,23 @@ article {
     text-align: left;
     min-width: 320px;
     max-width: 960px;
-    margin: 32px auto;
-    padding: 8px 32px 64px 32px;
-    border: 1px solid #CCCCCC;
+    margin: 32px auto 0 auto;
+    padding: 8px 32px 32px 32px;
+    //border: 1px solid #CCCCCC;
     background-color: white;
 
     font-family: "Noto Serif", serif;
     font-size: 18px;
+
+    h3 {
+        margin-bottom: 0;
+    }
+
+    .meta {
+        font-size: 14px;
+        color: #666;
+        margin-bottom: 32px;
+    }
 }
 
 nav.postmenu {
@@ -27,7 +37,7 @@ nav.postmenu {
         font-size: 14px;
         list-style: none;
         min-width: 120px;
-    
+
         transition: all 200ms;
         right: 0;
 

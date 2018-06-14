@@ -11,9 +11,8 @@ const parseTitleContent = html => {
     let matches = lines[0].match(/<h1.*?>(.*)<\/h1>/);
     if ( matches ) {
         title = matches[1];
-        content = lines.slice(1).join("\n");
+        content = lines.slice(1).join('\n');
     } else {
-        console.log( html );
         title = 'Title not found';
         content = html;
     }
@@ -37,6 +36,7 @@ export const massagePostFromAPI = post => ( {
     excerpt: post.excerpt,
     id: post.id,
     title: post.title.rendered,
+    date: post.date_gmt,
 
 } );
 

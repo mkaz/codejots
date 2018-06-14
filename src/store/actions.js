@@ -2,6 +2,8 @@
  * Redux actions
  */
 
+/* global wp */
+
 import { massagePostsFromAPI, massagePostForAPI } from '../post/utils';
 
 export const savePost = ( post, callback ) => ( {

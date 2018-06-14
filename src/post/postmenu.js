@@ -9,12 +9,12 @@ class PostMenu extends Component {
     constructor( props ) {
         super(props);
         this.state = {
-            menuClass: "items-hide"
-        }
+            menuClass: 'items-hide',
+        };
     };
 
     toggleMenu() {
-        const mc =( this.state.menuClass === "items-hide" ) ? 'items-show' : 'items-hide';
+        const mc =( this.state.menuClass === 'items-hide' ) ? 'items-show' : 'items-hide';
         this.setState( { menuClass: mc } );
     }
 

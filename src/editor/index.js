@@ -69,7 +69,7 @@ class Editor extends React.Component {
                     <span><button
                         className="save-button"
                         onClick={ () => this.handleSaveButton() } >
-                        Save Post
+                        Create Post
                     </button></span>
                     <span className="status">{ this.props.publishStatus }</span>
                 </div>

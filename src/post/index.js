@@ -5,9 +5,16 @@ import ReactCSSTransitionGroup from 'react-addons-css-transition-group'; // ES6
 
 /* Internal */
 import Post from './post';
+import Comment from '../comment';
 
 const Posts = ( { posts } ) => {
-    const postsSet = posts.map( post => ( <Post key={post.key} post={post} /> ) );
+
+    const postsSet = posts.map( post => (
+        <section className="post" key={post.key}>
+            <Post post={post} />
+            <Comment post={post} />
+        </section>
+    ) );
 
     return (
         <ReactCSSTransitionGroup
