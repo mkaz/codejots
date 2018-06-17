@@ -4,13 +4,13 @@ module.exports = {
         'comma-dangle': [ 'error', 'always-multiline'],
         'indent': [ 'error', 4 ],
         'linebreak-style': ['error', 'unix'],
-        'quotes': [ 'warn', 'single'],
+        'quotes': [ 'warn', 'single', { 'allowTemplateLiterals': true } ],
         'semi': [ 'error', 'always' ],
         'no-console': 'warn',
 
-        // disable 
+        // disable
         'jsx-a11y/href-no-hash': 'off',
         'jsx-a11y/anchor-is-valid': ['warn', { 'aspects': ['invalidHref'] }]
     }
 }
-  
+
