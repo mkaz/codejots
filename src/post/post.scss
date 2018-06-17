@@ -25,13 +25,15 @@ article {
 nav.postmenu {
     float:right;
     display: inline-block;
-    margin-top: -4.0rem;
+    margin-top: 0.75rem;
     margin-right: -16px;
     position: relative;
 
     ul {
         position: absolute;
+        z-index: 10;
         border: 1px solid #CCCCCC;
+        background-color: white;
         margin: 0;
         padding: 0px;
         font-size: 14px;

@@ -17,8 +17,8 @@ class Post extends Component {
     render() {
         return (
             <article>
-                <h3 dangerouslySetInnerHTML={{ __html: this.props.post.title }}></h3>
                 <PostMenu postId={ this.props.post.id } />
+                <h3 dangerouslySetInnerHTML={{ __html: this.props.post.title }}></h3>
                 <div className="meta">
                     Posted on: <time> { format( parse( this.props.post.date ), 'MMM D, YYYY' ) } </time>
                 </div>
