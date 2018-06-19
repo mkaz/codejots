@@ -18,7 +18,7 @@ const Posts = ( { posts, postsLabel } ) => {
 
     return (
         <section className="articles">
-            <h5 className="posts-label">{ postsLabel }</h5>
+            <h4 className="posts-label">{ postsLabel }</h4>
             <ReactCSSTransitionGroup
                 transitionName="fade"
                 transitionEnterTimeout={500}
