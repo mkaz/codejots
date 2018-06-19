@@ -18,8 +18,8 @@ export const savePost = ( post, callback ) => ( {
     },
 } );
 
-export const loadPosts = posts => ( {
-    type: 'LOAD_POSTS',
+export const recentPosts = posts => ( {
+    type: 'RECENT_POSTS',
     payload: massagePostsFromAPI( posts ),
 } );
 
@@ -29,4 +29,11 @@ export const trashPost = postId => ( {
         path: '/wp/v2/posts/' + postId,
         method: 'DELETE',
     } ),
+} );
+
+
+export const searchResults = ( posts, query ) => ( {
+    type: 'SEARCH_RESULTS',
+    payload: massagePostsFromAPI( posts ),
+    query: query,
 } );

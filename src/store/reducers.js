@@ -9,6 +9,7 @@ import { massagePostFromAPI } from '../post/utils';
 const initialState = {
     posts: [],
     publishStatus: '',
+    postsLabel: '',
 };
 
 const rootReducer = (state = initialState, action) => {
@@ -33,10 +34,11 @@ const rootReducer = (state = initialState, action) => {
             ...state,
             publishStatus: '',
         };
-    case 'LOAD_POSTS':
+    case 'RECENT_POSTS':
         return {
             ...state,
             posts: action.payload,
+            postsLabel: 'Recent Posts',
         };
     case 'TRASH_POST':
         return handle ( state, action, {
@@ -46,6 +48,12 @@ const rootReducer = (state = initialState, action) => {
                 } ),
             } ),
         } );
+    case 'SEARCH_RESULTS':
+        return {
+            ...state,
+            posts: action.payload,
+            postsLabel: 'Search Results: ' + action.query,
+        };
     default:
         return state;
     }
