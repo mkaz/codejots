@@ -15,6 +15,12 @@ class Search extends Component {
         };
     }
 
+    keyCheck = ( e ) => {
+        if ( e.key === 'Enter' ) {
+            this.handleSubmit();
+        }
+    }
+
     handleChange = ( e ) => {
         this.setState( { query: e.target.value } );
     }
@@ -29,7 +35,9 @@ class Search extends Component {
         return (
             <section className="search">
                 <label> Search: </label>
-                <input onChange={ this.handleChange } />
+                <input
+                    onKeyDown={ this.keyCheck }
+                    onChange={ this.handleChange } />
                 <button onClick={ () => this.handleSubmit() } > <i className="fa fa-search"/> </button>
             </section>
         );
