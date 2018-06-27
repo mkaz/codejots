@@ -7,7 +7,7 @@ import ReactCSSTransitionGroup from 'react-addons-css-transition-group'; // ES6
 import Post from './post';
 import Comment from '../comment';
 
-const Posts = ( { posts } ) => {
+const Posts = ( { posts, postsLabel } ) => {
 
     const postsSet = posts.map( post => (
         <section className="post" key={post.key}>
@@ -17,17 +17,21 @@ const Posts = ( { posts } ) => {
     ) );
 
     return (
-        <ReactCSSTransitionGroup
-            transitionName="fade"
-            transitionEnterTimeout={500}
-            transitionLeaveTimeout={300}>
-            { postsSet }
-        </ReactCSSTransitionGroup>
+        <section className="articles">
+            <h4 className="posts-label">{ postsLabel }</h4>
+            <ReactCSSTransitionGroup
+                transitionName="fade"
+                transitionEnterTimeout={500}
+                transitionLeaveTimeout={300}>
+                { postsSet }
+            </ReactCSSTransitionGroup>
+        </section>
     );
 };
 
 const mapStateToProps = state => ( {
     posts: state.posts,
+    postsLabel: state.postsLabel,
 } );
 
 export default connect(mapStateToProps)(Posts);
