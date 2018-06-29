@@ -54,6 +54,26 @@ const rootReducer = (state = initialState, action) => {
             posts: action.payload,
             postsLabel: 'Search Results: ' + action.query,
         };
+    case 'EDIT_POST':
+        return {
+            ...state,
+            posts: state.posts.map( ( post ) => {
+                if ( post.id === action.payload.id ) {
+                    post.editing = true;
+                }
+                return post;
+            } ),
+        };
+    case 'CANCEL_EDIT':
+        return {
+            ...state,
+            posts: state.posts.map( ( post ) => {
+                if ( post.id === action.payload.id ) {
+                    post.editing = false;
+                }
+                return post;
+            } ),
+        };
     default:
         return state;
     }

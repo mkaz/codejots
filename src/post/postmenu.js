@@ -3,7 +3,7 @@ import React, { Component } from 'react';
 import { connect } from 'react-redux';
 
 /* Internal */
-import { trashPost } from '../store/actions';
+import { editPost, trashPost } from '../store/actions';
 
 class PostMenu extends Component {
     constructor( props ) {
@@ -23,7 +23,7 @@ class PostMenu extends Component {
             <nav className="postmenu">
                 <div className="toggle" onClick={ () => this.toggleMenu() }><i className="fa fa-angle-down"></i></div>
                 <ul className={ this.state.menuClass }>
-                    <li> Edit Post </li>
+                    <li onClick={ () => this.props.editPost( this.props.postId ) }> Edit Post </li>
                     <li onClick={ () => this.props.trashPost( this.props.postId ) }> Move to Trash </li>
                 </ul>
             </nav>
@@ -32,6 +32,7 @@ class PostMenu extends Component {
 }
 
 const mapDispatchToProps = dispatch => ( {
+    editPost: ( postId ) => dispatch( editPost( postId ) ),
     trashPost: ( postId ) => dispatch( trashPost( postId ) ),
 } );
 

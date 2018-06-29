@@ -1,5 +1,3 @@
-/* Utility functions for posts */
-
 /* External */
 import uuid from 'uuid/v1';
 
@@ -19,35 +17,16 @@ const parseTitleContent = html => {
     return { title, content };
 };
 
-export const createPostFromMde = ( mde ) => {
+export const createPostFromMde = ( mde, postId = null ) => {
     const post = { title: {}, content: {} };
     var { title, content } = parseTitleContent( mde.html );
+    if ( postId ) {
+        post.id = postId;
+    }
     post.key = uuid();  // required for React
     post.title = title;
     post.content = content;
     return post;
 };
 
-// massage single post
-export const massagePostFromAPI = post => ( {
-    key: uuid(),
-    content: post.content.rendered,
-    date: post.date_gmt,
-    excerpt: post.excerpt,
-    id: post.id,
-    title: post.title.rendered,
-} );
-
-// massage post from API, remove rendered bits
-export const massagePostsFromAPI = posts => {
-    const newPosts = [];
-    posts.forEach( post => {
-        newPosts.push( massagePostFromAPI( post ) );
-    } );
-    return newPosts;
-};
-
-export const massagePostForAPI = post => {
-    post.status = 'publish';
-    return post;
-};
+export default createPostFromMde;
