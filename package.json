@@ -1,7 +1,10 @@
 {
   "name": "codejots",
-  "version": "0.1.0",
-  "private": true,
+  "version": "0.2.0",
+  "private": "true",
+  "author": "Marcus Kazmierczak",
+  "repository": "https://github.com/mkaz/codejots",
+  "license": "GPL-2.0-or-later",
   "scripts": {
     "lint": "eslint src/",
     "test": "jest src/",
