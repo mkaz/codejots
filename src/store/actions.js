@@ -18,6 +18,15 @@ export const savePost = ( post, callback ) => ( {
     },
 } );
 
+export const updatePost = ( post ) => ( {
+    type: 'UPDATE_POST',
+    promise: wp.apiRequest( {
+        path: `/wp/v2/posts/${post.id}`,
+        method: 'PUT',
+        data: post,
+    } ),
+} );
+
 export const recentPosts = posts => ( {
     type: 'RECENT_POSTS',
     payload: massagePostsFromAPI( posts ),
@@ -31,6 +40,15 @@ export const trashPost = postId => ( {
     } ),
 } );
 
+export const editPost = postId => ( {
+    type: 'EDIT_POST',
+    payload: { id: postId },
+} );
+
+export const cancelEdit = postId => ( {
+    type: 'CANCEL_EDIT',
+    payload: { id: postId },
+} );
 
 export const searchResults = ( posts, query ) => ( {
     type: 'SEARCH_RESULTS',

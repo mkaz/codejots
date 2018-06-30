@@ -41,7 +41,7 @@ function codejots_enqueue_scripts() {
     wp_enqueue_script(
         'codejots-script',
         get_template_directory_uri() . '/dist/bundle.js',
-        array ( 'wp-api-request' ),
+        array ( 'wp-api-request', 'jquery' ),
         1.0,
         true
     );

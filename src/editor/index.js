@@ -9,7 +9,7 @@ import debounce from 'debounce';
 /* Internal */
 import './editor.scss';
 import { savePost } from '../store/actions';
-import { createPostFromMde } from '../post/utils';
+import { createPostFromMde } from '../utils/create-post-mde';
 
 class Editor extends React.Component {
     constructor( props ) {

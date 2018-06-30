@@ -4,6 +4,7 @@ import { connect } from 'react-redux';
 import ReactCSSTransitionGroup from 'react-addons-css-transition-group'; // ES6
 
 /* Internal */
+import UpdateEditor from '../editor/update';
 import Post from './post';
 import Comment from '../comment';
 
@@ -11,7 +12,7 @@ const Posts = ( { posts, postsLabel } ) => {
 
     const postsSet = posts.map( post => (
         <section className="post" key={post.key}>
-            <Post post={post} />
+            { post.editing ? <UpdateEditor post={post} /> : <Post post={post} /> }
             <Comment post={post} />
         </section>
     ) );
