@@ -1,4 +1,3 @@
-/* global wp */
 
 /* External */
 import React, { Component } from 'react';

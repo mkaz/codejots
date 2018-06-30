@@ -4,7 +4,6 @@ import { connect } from 'react-redux';
 import ReactMde from 'react-mde';
 import Showdown from 'showdown';
 import 'react-mde/lib/styles/scss/react-mde-all.scss';
-import debounce from 'debounce';
 
 /* Internal */
 import './editor.scss';

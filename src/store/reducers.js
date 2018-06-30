@@ -26,6 +26,7 @@ const rootReducer = (state = initialState, action) => {
         } );
     case 'UPDATE_POST':
         return handle( state, action, {
+            // TODO: failure notice for updating post
             success: prevState => ( { ...prevState,
                 posts: prevState.posts.map( ( post ) => {
                     if ( post.id === action.payload.id ) {
