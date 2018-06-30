@@ -24,6 +24,17 @@ const rootReducer = (state = initialState, action) => {
                 publishStatus: 'Saved',
             } ),
         } );
+    case 'UPDATE_POST':
+        return handle( state, action, {
+            success: prevState => ( { ...prevState,
+                posts: prevState.posts.map( ( post ) => {
+                    if ( post.id === action.payload.id ) {
+                        return massagePostFromAPI( action.payload );
+                    }
+                    return post;
+                } ),
+            } ),
+        } );
     case 'PUBLISH_NO_CONTENT':
         return {
             ...state,

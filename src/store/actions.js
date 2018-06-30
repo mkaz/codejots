@@ -18,16 +18,13 @@ export const savePost = ( post, callback ) => ( {
     },
 } );
 
-export const updatePost = ( post, callback ) => ( {
+export const updatePost = ( post ) => ( {
     type: 'UPDATE_POST',
     promise: wp.apiRequest( {
-        path: '/wp/v2/posts',
+        path: `/wp/v2/posts/${post.id}`,
         method: 'PUT',
-        data: massagePostForAPI( post ),
+        data: post,
     } ),
-    meta: {
-        onSuccess: callback,
-    },
 } );
 
 export const recentPosts = posts => ( {

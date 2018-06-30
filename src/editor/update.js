@@ -10,12 +10,12 @@ import debounce from 'debounce';
 import './editor.scss';
 import { cancelEdit, updatePost } from '../store/actions';
 import createMdeFromPost from '../utils/create-mde-post';
+import createPostFromMde from '../utils/create-post-mde';
 
 class UpdateEditor extends React.Component {
     constructor( props ) {
         super( props );
 
-        // TODO: convert content from HTML => Markdown
         this.state = {
             mdeState: createMdeFromPost( props.post ),
         };
@@ -28,7 +28,7 @@ class UpdateEditor extends React.Component {
 
     handleSaveButton = () => {
         this.props.updatePost(
-            createPostFromMde( this.state.mdeState )
+            createPostFromMde( this.state.mdeState, this.props.post.id )
         );
     }
 
