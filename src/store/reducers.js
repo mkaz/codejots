@@ -10,6 +10,7 @@ const initialState = {
     posts: [],
     publishStatus: '',
     postsLabel: '',
+    isLoggedIn: false,
 };
 
 const rootReducer = (state = initialState, action) => {
@@ -86,6 +87,12 @@ const rootReducer = (state = initialState, action) => {
                 return post;
             } ),
         };
+    case 'GET_USER':
+        return handle ( state, action, {
+            success: prevState => ( { ...prevState,
+                isLoggedIn: action.payload.status !== 401,
+            } ),
+        } );
     default:
         return state;
     }

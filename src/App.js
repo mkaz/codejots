@@ -6,7 +6,7 @@ import { connect } from 'react-redux';
 import Search from './search';
 import Posts from './post';
 import Editor from './editor';
-import { recentPosts } from './store/actions';
+import { getUser, recentPosts } from './store/actions';
 
 class App extends Component {
 
@@ -14,6 +14,8 @@ class App extends Component {
         fetch( '/wp-json/wp/v2/posts')
             .then( response => { return response.json(); } )
             .then( posts => { this.props.recentPosts( posts ); } );
+
+        this.props.getUser();
     }
 
     render() {
@@ -21,7 +23,7 @@ class App extends Component {
             <div className="app">
                 <section className="main">
                     <Search/>
-                    <Editor/>
+                    { this.props.isLoggedIn && <Editor/> }
                     <Posts />
                 </section>
             </div>
@@ -29,8 +31,14 @@ class App extends Component {
     }
 }
 
-const mapDispatchToProps = dispatch => ( {
-    recentPosts: posts => dispatch( recentPosts( posts ) ),
+const mapStateToProps = state => ( {
+    isLoggedIn: state.isLoggedIn,
 } );
 
-export default connect( null, mapDispatchToProps)( App );
+
+const mapDispatchToProps = dispatch => ( {
+    recentPosts: posts => dispatch( recentPosts( posts ) ),
+    getUser: () => dispatch( getUser() ),
+} );
+
+export default connect( mapStateToProps, mapDispatchToProps)( App );

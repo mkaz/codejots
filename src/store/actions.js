@@ -55,3 +55,11 @@ export const searchResults = ( posts, query ) => ( {
     payload: massagePostsFromAPI( posts ),
     query: query,
 } );
+
+export const getUser = () => ( {
+    type: 'GET_USER',
+    promise: wp.apiRequest( {
+        path: '/wp/v2/users/me',
+        method: 'GET',
+    } ),
+} );
